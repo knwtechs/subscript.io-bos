@@ -179,20 +179,18 @@ if (state.balance === undefined && state.sender) {
 }
 
 // CONTRACT INSTANCE
-if (state.sender) {
-  const contractAddress = "0x1A1F1D20C404D9C2399a56166256d25fe3e2A93D";
-  const factoryABI = fetch(
-    "https://raw.githubusercontent.com/knwtechs/NFT-subscriptions-contracts/main/artifacts/contracts/SubscriptionsFactory.sol/SubscriptionsFactory.json"
-  );
-  if (!factoryABI.ok) {
-    return "Contract unavailable.";
-  }
-  const subscriptionsFactoryContract = new ethers.Contract(
-    contractAddress,
-    JSON.parse(factoryABI.body)["abi"],
-    Ethers.provider().getSigner()
-  );
+const contractAddress = "0x1A1F1D20C404D9C2399a56166256d25fe3e2A93D";
+const factoryABI = fetch(
+  "https://raw.githubusercontent.com/knwtechs/subscript.io-contracts/main/artifacts/contracts/SubscriptionsFactory.sol/SubscriptionsFactory.json"
+);
+if (!factoryABI.ok) {
+  return "Contract unavailable.";
 }
+const subscriptionsFactoryContract = new ethers.Contract(
+  contractAddress,
+  JSON.parse(factoryABI.body)["abi"],
+  Ethers.provider().getSigner()
+);
 
 // INIT STATE
 State.init({
@@ -294,19 +292,22 @@ const isFormValid = () => {
 // CONTRACT INTERACTION
 const createCollection = async () => {
   if (isFormValid()) {
-    console.log("form valid, performing contract call: ");
+    console.log("form valid, performing contract call.");
     const amount = Big(state.price).mul(Big(10).pow(18)).toString();
     const start = Big(
-      Math.floor(new Date(dateTimeString).getTime() / 1000)
+      Math.floor(new Date(state.startTimestamp).getTime() / 1000)
     ).toString();
+    const frame = Big(state.timeframe).mul(86400).toString();
     console.log("Amount: ", amount);
+    console.log("Start: ", start);
+    console.log("Frame: ", frame);
 
     subscriptionsFactoryContract
       .createCollection(
         state.product_name,
         [amount],
-        [`${state.supply}`],
-        Big(state.timeframe * 86400).toString(),
+        [Big(state.supply).toString()],
+        frame,
         state.sender,
         state.uri,
         start
