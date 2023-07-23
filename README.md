@@ -30,7 +30,7 @@ The SubScript.io-BOS front-end interacts with the smart contracts deployed in th
 3. Once contracts are deployed, UI shows a link to the merchant dashboard, which the merchant can follow to check informations about all his existent subscriptions collections
 4. In the merchant dashboard, the UI shows two buttons for each collection deployed by the merchant. The first button can be used to copy the code of an Iframe that the merchant can use to embed the button in his application, while the second copies a widget used for checking that a subscription is active
 
-# User’s point of view
+# Customer’s point of view
   1. The user chooses a subscription on the merchant’s application and buys it using the mentioned button
   2. After subscription purchase, the UI shows a link to the user’s dashboard, where the user can visualize informations about all his active subscriptions (collection name, renewal deadline…)
   3. The user’s dashboard shows a button that can be used to renew the subscription (upon payment of the recurrent price)
@@ -40,6 +40,53 @@ The SubScript.io-BOS front-end interacts with the smart contracts deployed in th
 
 The application has been deployed on vercel and it can be accessed through a web browser, at the following [url](http://ethglobal.knwtechs.com/). Connect your Ethereum wallet to interact with the SubScript.io-BOS front-end. Browse available subscription plans, make purchases, and manage your NFT-based subscriptions seamlessly.
 
+## Integrations
+
+There are two widgets made to simplify the SubScript.io integration:
+
+1. Subscribe Button ```knwtechs.near/widget/Integrations.subscribe```
+2. Renew Button ```knwtechs.near/widget/Integrations.renew```
+
+- You can easily include them in the way you prefer: <a href="https://docs.near.org/bos/tutorial/using-iframes" target="_blank">iframe</a> or <a href="https://docs.near.org/bos/home#composing-components" target="_blank">widget</a>.
+
+## SDK
+A lighweight js sdk has been developed to help developers and creators to easily verify if a user has a valid subscription. Here is an example.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Add your head content here -->
+</head>
+<body>
+  <!-- Include the subscript-sdk.js file -->
+  <script src="sdk/subscript-sdk.js"></script>
+
+  <!-- Your other HTML content here -->
+
+  <script>
+    // Usage of the SDK function
+    const tier = YOUR_TIER;
+    const collectionAddress = 'YOUR_COLLECTION_ADDRESS';
+
+    subscriptSDK.isUserSubscribed(tier, collectionAddress)
+      .then((result) => {
+        if (result === null) {
+          console.log('An error occurred while checking the subscription deadline.');
+        } else if (result === true) {
+          console.log('Subscription is still active.');
+        } else {
+          console.log('Subscription has expired.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  </script>
+</body>
+</html>
+
+```
 
 ## License
 
