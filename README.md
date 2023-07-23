@@ -1,6 +1,6 @@
 # SubScript.io-BOS - Decentralized Front-End for ERC1155 NFTs Subscription
 
-SubScript.io-BOS is the decentralized front-end of a Dapp that enables services subscriptions using ERC1155 NFTs. Each NFT represents a subscription and will be kept by the subscriber as long as they pay the recurrent subscription price. If the subscriber suddenly stops needing the subscription’s services, they are also able to transfer the subscription NFT before the subscription expiry in order to recoup some of the money spent. The front-end has been deployed on Vercel at this [url](https://viewer-58b8m8crp-knw-technologies.vercel.app/?vercelToolbarCode=AtZEeggxs4KyCfS#/4ac12ee4ebd5536d7b130a9c5f8eebb1136145312c9e523289bf346268aeebfd/widget/Main.create). This repository serves as the user interface, allowing users to interact with the underlying smart contracts, which can be found in the [subscript.io-contracts](https://github.com/knwtechs/subscript.io-contracts) repository. Currently, the front-end interacts with the contracts deployed on Ethereum Sepolia testate, but the contracts have been deployed to various EVM-compatible blockchains (see contracts repository for full list).
+SubScript.io-BOS is the decentralized front-end of a Dapp that enables services subscriptions using ERC1155 NFTs. Each NFT represents a subscription and will be kept by the subscriber as long as they pay the recurrent subscription price. If the subscriber suddenly stops needing the subscription’s services, they are also able to transfer the subscription NFT before the subscription expiry in order to recoup some of the money spent. This repository serves as the user interface, allowing users to interact with the underlying smart contracts, which can be found in the [subscript.io-contracts](https://github.com/knwtechs/subscript.io-contracts) repository. Currently, the front-end interacts with the contracts deployed on Ethereum Sepolia testate, but the contracts have been deployed to various EVM-compatible blockchains (see contracts repository for full list).
 
 ## Table of Contents
 
@@ -38,7 +38,7 @@ The SubScript.io-BOS front-end interacts with the smart contracts deployed in th
 
 ## Usage
 
-The application has been deployed on vercel and it can be accessed through a web browser, at the following [url](INSERIRE_URL). Connect your Ethereum wallet to interact with the SubScript.io-BOS front-end. Browse available subscription plans, make purchases, and manage your NFT-based subscriptions seamlessly.
+The application has been deployed on vercel and it can be accessed through a web browser, at the following [url](http://ethglobal.knwtechs.com/). Connect your Ethereum wallet to interact with the SubScript.io-BOS front-end. Browse available subscription plans, make purchases, and manage your NFT-based subscriptions seamlessly.
 
 
 ## License
