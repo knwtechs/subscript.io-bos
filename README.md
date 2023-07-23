@@ -1,6 +1,6 @@
-# SubScript.io-BOS - Decentralized Front-End for ERC1155 NFTs Subscription
+# SubScript.io-BOS - Decentralized Front-End for ERC1155 NFTs Subscriptions
 
-SubScript.io-BOS is the decentralized front-end of a Dapp that enables services subscriptions using ERC1155 NFTs. Each NFT represents a subscription and will be kept by the subscriber as long as they pay the recurrent subscription price. If the subscriber suddenly stops needing the subscription’s services, they are also able to transfer the subscription NFT before the subscription expiry in order to recoup some of the money spent. This repository serves as the user interface, allowing users to interact with the underlying smart contracts, which can be found in the [subscript.io-contracts](https://github.com/knwtechs/subscript.io-contracts) repository. Currently, the front-end interacts with the contracts deployed on Ethereum Sepolia testnet but the contracts have been deployed to various EVM-compatible blockchains (see contracts repository for full list).
+SubScript.io-BOS is the decentralized front-end of a Dapp that enables service subscriptions using ERC1155 NFTs. Each NFT represents a subscription and will be kept by the subscriber as long as they pay the recurrent subscription price. If the subscriber suddenly stops needing the subscription’s services, they are also able to transfer the subscription NFT before the subscription expiry in order to recoup some of the money spent. This repository serves as the user interface, allowing users to interact with the underlying smart contracts, which can be found in the [subscript.io-contracts](https://github.com/knwtechs/subscript.io-contracts) repository. Currently, the front-end interacts with the contracts deployed on Ethereum Sepolia testnet but the contracts have been deployed to various EVM-compatible blockchains (see contracts repository for full list).
 
 ## Table of Contents
 
@@ -85,7 +85,6 @@ A lighweight js sdk has been developed to help developers and creators to easily
   </script>
 </body>
 </html>
-
 ```
 
 ## License
