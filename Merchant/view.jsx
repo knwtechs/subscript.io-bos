@@ -57,11 +57,10 @@ const getMerchantCollections = (merchant) => {
     .getLogs(filter)
     .then((logs) => {
       const collections = [];
-      for (let i = 0; i < logs.length; i++) {
+      for (let i = 1; i < logs.length; i++) {
         console.log(subscriptionsFactoryContract.interface.parseLog(logs[i]));
         const collectionAddress =
           subscriptionsFactoryContract.interface.parseLog(logs[i]).args[1];
-        console.log("collectionAddress: ", collectionAddress);
         collections.push(collectionAddress);
       }
       State.update({ collections: collections });
