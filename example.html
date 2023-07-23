@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Add your head content here -->
+</head>
+<body>
+  <!-- Include the subscript-sdk.js file -->
+  <script src="sdk/subscript-sdk.js"></script>
+
+  <!-- Your other HTML content here -->
+
+  <script>
+    // Usage of the SDK function
+    const tier = YOUR_TIER;
+    const collectionAddress = 'YOUR_COLLECTION_ADDRESS';
+
+    subscriptSDK.isUserSubscribed(tier, collectionAddress)
+      .then((result) => {
+        if (result === null) {
+          console.log('An error occurred while checking the subscription deadline.');
+        } else if (result === true) {
+          console.log('Subscription is still active.');
+        } else {
+          console.log('Subscription has expired.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  </script>
+</body>
+</html>
