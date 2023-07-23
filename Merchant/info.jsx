@@ -108,8 +108,8 @@ const getCollectionImage = () => {
         const real_uri = uri[0].slice(0, uri[0].length - 1);
         const metas = fetch(real_uri);
         if (metas.ok) {
-          const jsonmeta = JSON.parse(metas.body);
-          State.update({ uri: jsonmeta["image"] });
+          const jsonmeta = metas.body;
+          State.update({ uri: jsonmeta.image });
         } else {
           console.log(metas);
         }
@@ -145,14 +145,49 @@ if (Ethers.provider()) {
 
 return (
   <tr>
-    <th scope="row" class="text-white">
-      <img src={state.uri} class="img-fluid" />
+    <th scope="row" class="text-white" style={{ verticalAlign: "middle" }}>
+      <img src={state.uri} class="img-fluid" style={{ maxWidth: "5vw" }} />
     </th>
-    <th class="text-white">{state.name}</th>
-    <td class="text-white">{state.circulating_supply}</td>
-    <td class="text-white">{state.max_supply > 0 ? state.max_supply : "-"}</td>
-    <td class="text-white">{state.price} Ξ</td>
-    <td class="text-white">{state.total_earnings} Ξ</td>
-    <td class="text-white">{new Date().toLocaleDateString()}</td>
+    <th class="text-white align-center" style={{ verticalAlign: "middle" }}>
+      {state.name}
+    </th>
+    <td class="text-white" style={{ verticalAlign: "middle" }}>
+      {state.circulating_supply}
+    </td>
+    <td class="text-white" style={{ verticalAlign: "middle" }}>
+      {state.max_supply > 0 ? state.max_supply : "-"}
+    </td>
+    <td class="text-white" style={{ verticalAlign: "middle" }}>
+      {state.price} Ξ
+    </td>
+    <td class="text-white" style={{ verticalAlign: "middle" }}>
+      {state.total_earnings} Ξ
+    </td>
+    <td class="text-white" style={{ verticalAlign: "middle" }}>
+      {new Date().toLocaleDateString()}
+    </td>
+    <td class="text-white" style={{ verticalAlign: "middle" }}>
+      <div class="d-flex">
+        <button
+          onClick={() => {
+            clipboard.writeText(`<iframe src="https://ethglobal.knwtechs.com/#/knwtechs.near/widget/Integration.subscribe?collectionAddress=${state.collectionAddress}&sender=<here_your_customer_address>"
+            />`);
+          }}
+          class="btn btn-sm btn-secondary"
+        >
+          Subscribe iframe
+        </button>
+        <div style={{ marginLeft: "1vw" }} />
+        <button
+          onClick={() => {
+            clipboard.writeText(`<iframe src="https://ethglobal.knwtechs.com/#/knwtechs.near/widget/Integration.renew?collectionAddress=${state.collectionAddress}&tier=<optional>"
+            />`);
+          }}
+          class="btn btn-sm btn-secondary"
+        >
+          Renew iframe
+        </button>
+      </div>
+    </td>
   </tr>
 );
